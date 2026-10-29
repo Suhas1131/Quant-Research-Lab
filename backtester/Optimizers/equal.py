@@ -1,8 +1,8 @@
 """
 Equal-weight portfolio optimizer.
 
-The optimizer assigns equal target weights to all supplied items while
-optionally reserving part of the available allocation as cash.
+The optimizer assigns equal target weights to all supplied items while optionally reserving part of the available
+allocation as cash.
 """
 
 
@@ -10,8 +10,7 @@ class Equal:
     """
     Allocate available capital equally across a collection of items.
 
-    The same optimizer can be used between models or between trades within
-    a model.
+    The same optimizer can be used between models or between trades within a model.
     """
 
     def __init__(self, cashReserve=0.0):
@@ -39,8 +38,7 @@ class Equal:
         """
         Calculate equal target weights for the supplied items.
 
-        Weights are relative to the capital supplied to this optimizer. Any
-        configured cash reserve remains unallocated.
+        Weights are relative to the capital supplied to this optimizer. Any configured cash reserve remains unallocated.
 
         Inputs:
             - items (iterable): Unique models, trades, or other allocation items
@@ -62,10 +60,7 @@ class Equal:
         investableWeight = 1.0 - self.cashReserve
         itemWeight = investableWeight / len(items)
 
-        weights = {
-            item: itemWeight
-            for item in items
-        }
+        weights = {item: itemWeight for item in items}
 
         return {
             "weights": weights,
